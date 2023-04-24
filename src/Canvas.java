@@ -21,10 +21,11 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
         addMouseListener(this); // agrega un escucha de eventos de ratón al panel
         addMouseMotionListener(this); // agrega un escucha de eventos de movimiento de ratón al panel
         setBackground(Color.black); // establece el color de fondo del panel en negro
-        img = new BufferedImage(ROWS * CELL_SIZE, COLS * CELL_SIZE, BufferedImage.TYPE_INT_ARGB);
+        img = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
         g2d = img.createGraphics();
         g2d.setColor(currentColor);
     }
+    
 
     @Override
     public void paintComponent(Graphics g) { // método para pintar el panel
@@ -43,10 +44,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
             }
         }
 
-        g.setColor(Color.GREEN); // establece el color para dibujar el marcador de posición del ratón
-        g.fillOval(x - 5, y - 5, 10, 10); // dibuja el marcador de posición del ratón como un círculo amarillo
+        g.setColor(currentColor);
+        g.fillOval(x - 5, y - 5, 10, 10);
     }
-
+   
     @Override
     public void mouseClicked(MouseEvent e) { // método para los clics de ratón
         x = e.getX() / CELL_SIZE; // obtiene las coordenadas x e y de la celda
@@ -113,4 +114,3 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     }
 
     } 
-        
